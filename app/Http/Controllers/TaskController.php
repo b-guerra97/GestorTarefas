@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Status;
+use App\Models\Tag;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -41,20 +42,16 @@ class TaskController extends Controller
         ]);
 
         $task = new Task($validated);
-//        $task->name = $validated['name'];
-//        $task->description = $validated['description'];
-//        $task->status_id = $validated['status_id'];
-//        $task->project_id = $validated['project_id'];
 
         $task->save();
 
-        return view('projects.index');
+        return redirect()->route('projects.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Task $task)
+   public function show(Task $task)
     {
         return view('tasks.show', compact('task'));
     }
@@ -64,7 +61,10 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('tasks.edit', compact('task'));
+        $tags = Tag::all();
+        $statuses = Status::all();
+        $tags_tasks = $task->tags()->get();
+        return view('tasks.edit', compact('task', 'tags', 'statuses', 'tags_tasks'));
     }
 
     /**
@@ -72,7 +72,15 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'status_id' => 'required|integer',
+        ]);
+        $task->update($validated);
+        $task->tags()->sync($request->tags);
+
+        return redirect()->route('projects.index');
     }
 
     /**
@@ -80,6 +88,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect()->back();
     }
 }

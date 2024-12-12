@@ -31,6 +31,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                            <a href="{{route('projects.index')}}" class="btn btn-secondary">Voltar</a>
                         </form>
 
 {{--                        <form action="{{ route('tasks.create') }}" method="GET" class="mt-3">--}}

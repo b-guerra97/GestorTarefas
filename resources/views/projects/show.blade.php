@@ -1,3 +1,45 @@
-<div>
-    <!-- It is not the man who has too little, but the man who craves more, that is poor. - Seneca -->
-</div>
+@extends('layouts.masterPage')
+@section('pretitle', '')
+@section('title', '')
+
+
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="text-center">{{$project->name}}</h1>
+            <div class="d-flex justify-content-center gap-2 mt-2 mb-4">
+                <a href="{{route('tasks.create', ['project_id' => $project->id])}}" class="btn btn-primary">Criar Nova Tarefa</a>
+                <a href="{{ route('projects.index') }}" class="btn btn-secondary">Voltar</a>
+            </div>
+                @foreach($tasks as $task)
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h3>{{ $task->name }}</h3>
+                            <p>{{ $task->description }}</p>
+                            <ul>
+                                @foreach($task->tags as $tag)
+                                    <li>{{$tag->tag}}</li>
+                                @endforeach
+                            </ul>
+                            <p>{{$task->status->status}}</p>
+                            <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                            <form action="{{ route('tasks.destroy', $task) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger"><i class="ti ti-trash"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+
+        </div>
+    </div>
+
+@endsection
+
+@push('scripts')
+    {{--O meu JS para essa página--}}
+@endpush

@@ -20,14 +20,15 @@
                                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="status" class="form-label">Status da Tarefa</label>
-                                <select class="form-control" id="status" name="status">
+                                <label for="status_id" class="form-label">Status da Tarefa</label>
+                                <select class="form-control" id="status_id" name="status_id">
                                     @foreach($statuses as $status)
                                         <option value="{{ $status->id }}">{{ $status->status }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-secondary">Criar Tarefa</button>
+                            <button type="submit" class="btn btn-primary">Criar Tarefa</button>
+                            <a href="{{route('projects.show', $projectId)}}" class="btn btn-secondary">Voltar</a>
                         </form>
                     </div>
                 </div>

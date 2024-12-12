@@ -16,7 +16,8 @@ class TagSeeder extends Seeder
         DB::table('tags')->insert([
             ['tag'=>'Prioridade Elevada'],
             ['tag'=>'Prioridade Média'],
-            ['tag'=>'Prioridade Baixa']
+            ['tag'=>'Prioridade Baixa'],
+            ['tag'=>'Urgente'],
         ]);
     }
 }

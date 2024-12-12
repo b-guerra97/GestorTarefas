@@ -22,7 +22,7 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>ID</th>
+                                <th class="d-none">ID</th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Status</th>
@@ -33,7 +33,7 @@
                             <tbody>
                             @foreach($projects as $project)
                                 <tr>
-                                    <td>{{ $project->id }}</td>
+                                    <td class="d-none">{{ $project->id }}</td>
                                     <td>{{ $project->name }}</td>
                                     <td>{{ Str::limit($project->description, 40) }}</td>
                                     <td>{{ $project->status->status}}</td>
@@ -42,7 +42,7 @@
                                         <a href="{{ route('tasks.create', ['project_id' => $project->id]) }}" class="btn btn-secondary">
                                             <i class="fa fa-plus" aria-hidden="true"></i> </a>
 
-                                        <a href="" class="btn btn-info"><i class="ti ti-eye"></i></a>
+                                        <a href="{{ route('projects.show', $project) }}" class="btn btn-info"><i class="ti ti-eye"></i></a>
                                         <a href="{{ route('projects.edit', $project) }}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                         <form action="{{ route('projects.destroy', $project) }}" method="POST" style="display:inline;">
                                             @csrf

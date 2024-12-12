@@ -52,6 +52,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary">Criar</button>
+                            <a href="{{route('projects.index')}}" class="btn btn-secondary">Voltar</a>
                         </form>
                     </div>
                 </div>

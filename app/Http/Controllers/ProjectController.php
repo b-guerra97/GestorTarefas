@@ -55,7 +55,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-       return view('projects.show', compact('project'));
+        $tasks = $project->tasks()->with('status', 'tags')->get();
+//        $tags_tasks = $task->tags;
+//        $status = $task->status();
+       return view('projects.show', compact('project', 'tasks'));
     }
 
     /**
@@ -89,6 +92,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        foreach($project -> tasks() -> get() as $task){
+            $task -> delete();
+        }
+
+        $project->delete();
+        return redirect()->route('projects.index');
     }
 }
