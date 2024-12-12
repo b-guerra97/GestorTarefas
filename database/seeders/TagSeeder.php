@@ -14,10 +14,10 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         DB::table('tags')->insert([
-            ['tag'=>'Prioridade Elevada'],
-            ['tag'=>'Prioridade Média'],
-            ['tag'=>'Prioridade Baixa'],
-            ['tag'=>'Urgente'],
+            ['tag'=>'Prioridade Elevada', 'created_at'=>now(), 'updated_at'=>now()],
+            ['tag'=>'Prioridade Média', 'created_at'=>now(), 'updated_at'=>now()],
+            ['tag'=>'Prioridade Baixa', 'created_at'=>now(), 'updated_at'=>now()],
+            ['tag'=>'Urgente', 'created_at'=>now(), 'updated_at'=>now()],
         ]);
     }
 }
