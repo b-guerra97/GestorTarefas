@@ -26,13 +26,9 @@
     <header class="bg-light py-3 shadow-sm">
         <div class="container d-flex justify-content-between align-items-center">
             <!-- Logo -->
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <img src="" alt="Logo" class="me-2">
-            </a>
-
-            <!-- User Icon -->
-            <a href="#" class="text-decoration-none">
-                <img src="https://via.placeholder.com/40" alt="User Icon" class="rounded-circle border">
+            <a href="#" class="navbar-brand">
+                <img src="https://cdn-icons-png.flaticon.com/512/8019/8019152.png" alt="Logo" class="ms-4" style="width: 70px;">
+                <h2 class="m-0">Gestor de Tarefas</h2>
             </a>
         </div>
     </header>
@@ -65,9 +61,8 @@
         </div>
         {{--Footer--}}
         <footer class="footer footer-transparent d-print-none">
-            <div class="container-xl"></div>
-            <div class="row text-center align-items-center flex-row-reverse">
-                <div class="col">
+            <div class="container">
+                <div class="row text-center align-items-center flex-row-reverse">
                     <p>&copy Beatriz Guerra, Tayara Cruz - ATEC - TPSICAS1123 - Todos os direitos reservados </p>
                 </div>
             </div>
