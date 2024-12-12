@@ -20,55 +20,53 @@
     @vite(['resources/sass/app.scss'])
 </head>
 
-<body class="layout-fluid">
-<div class="page">
-    <!-- Header -->
-    <header class="bg-light py-3 shadow-sm">
-        <div class="container d-flex justify-content-between align-items-center">
-            <!-- Logo -->
-            <a href="#" class="navbar-brand">
-                <img src="https://cdn-icons-png.flaticon.com/512/8019/8019152.png" alt="Logo" class="ms-4" style="width: 70px;">
-                <h2 class="m-0">Gestor de Tarefas</h2>
-            </a>
-        </div>
-    </header>
+<body>
+    <div class="page">
+        <!-- Header -->
+        <header class="bg-light py-3 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mx-4">
+                <!-- Logo -->
+                <a href="#" class="navbar-brand">
+                    <img src="https://cdn-icons-png.flaticon.com/512/8019/8019152.png" alt="Logo" class="ms-4" style="width: 70px;">
+                    <h2 class="m-0">Gestor de Tarefas</h2>
+                </a>
+            </div>
+        </header>
 
-    <!-- Main Content -->
-    <div class="page-wrapper">
-        <!-- Page header -->
-        <div class="page-header d-print-none">
-            <div class="container-xl">
-                <div class="row g-2 align-items-center">
-                    <div class="col">
-                        <!-- Page pre-title -->
-                        <div class="page-pretitle">@yield('pretitle')</div>
-                        <h2 class="page-title">@yield('title')</h2>
-                    </div>
-                    <!-- Page title actions -->
-                    <div class="col-auto ms-auto d-print-none">
-                        <div class="btn-list">
-                            {{--Botões de açao da página--}}
+        <!-- Main Content -->
+        <div class="page-wrapper">
+            <!-- Page header -->
+            <div class="page-header d-print-none">
+                <div class="container">
+                    <div class="row g-2 align-items-center">
+                        <div class="col">
+                            <!-- Page pre-title -->
+                            <div class="page-pretitle">@yield('pretitle')</div>
+                            <h2 class="page-title">@yield('title')</h2>
+                        </div>
+                        <!-- Page title actions -->
+                        <div class="col-auto ms-auto d-print-none">
+                            <div class="btn-list">
+                                {{--Botões de açao da página--}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {{--Page Body--}}
-        <div class="page-body">
-            <div class="container-xl">
+            {{--Page Body--}}
+            <div class="container">
                 @yield('content')
             </div>
-        </div>
-        {{--Footer--}}
-        <footer class="footer footer-transparent d-print-none">
-            <div class="container">
-                <div class="row text-center align-items-center flex-row-reverse">
-                    <p>&copy Beatriz Guerra, Tayara Cruz - ATEC - TPSICAS1123 - Todos os direitos reservados </p>
+            {{--Footer--}}
+            <footer class="footer footer-transparent d-print-none">
+                <div class="container">
+                    <div class="row text-center align-items-center flex-row-reverse">
+                        <p>&copy Beatriz Guerra, Tayara Cruz - ATEC - TPSICAS1123 - Todos os direitos reservados </p>
+                    </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </div>
-</div>
 <!-- Libs JS -->
 
 @vite(['resources/js/app.js'])

@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
 
-            <div class="col-md-6">
+            <div class="col-md-8 col-lg-6 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <h3>Criar Nova Tarefa</h3>
+                        <h3>Nova Tarefa</h3>
                         <form action="{{ route('tasks.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="project_id" value="{{ $projectId }}">
@@ -26,6 +26,17 @@
                                         <option value="{{ $status->id }}">{{ $status->status }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="tags" class="form-label">Tags da Tarefa</label>
+                                @foreach($tags as $tag)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id="flexCheckDefault" name="tags[]">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{$tag->tag}}
+                                        </label>
+                                    </div>
+                                @endforeach
                             </div>
                             <button type="submit" class="btn btn-primary">Criar Tarefa</button>
                             <a href="{{route('projects.show', $projectId)}}" class="btn btn-secondary">Voltar</a>

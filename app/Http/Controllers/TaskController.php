@@ -24,8 +24,9 @@ class TaskController extends Controller
     {
         $projectId = $request->input('project_id');
         $statuses = Status::all();
+        $tags = Tag::all();
 
-        return view('tasks.create', compact('projectId', 'statuses'));
+        return view('tasks.create', compact('projectId', 'statuses', 'tags'));
     }
 
 
@@ -44,6 +45,7 @@ class TaskController extends Controller
         $task = new Task($validated);
 
         $task->save();
+        $task->tags()->sync($request->tags);
 
         return redirect()->route('projects.index');
     }

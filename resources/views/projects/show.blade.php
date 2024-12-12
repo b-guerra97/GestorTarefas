@@ -12,9 +12,11 @@
                 <a href="{{route('tasks.create', ['project_id' => $project->id])}}" class="btn btn-primary">Criar Nova Tarefa</a>
                 <a href="{{ route('projects.index') }}" class="btn btn-secondary">Voltar</a>
             </div>
+        </div>
+        <div class="row row-cols-2 row-cols-lg-4 row-cols-md-3 g-4 justify-content-center">
                 @foreach($tasks as $task)
-                <div class="col-md-3">
-                    <div class="card">
+                <div class="col">
+                    <div class="card h-100">
                         <div class="card-body text-center">
                             <h3>{{ $task->name }}</h3>
                             <p>{{ $task->description }}</p>
@@ -34,7 +36,6 @@
                     </div>
                 </div>
                 @endforeach
-
         </div>
     </div>
 
