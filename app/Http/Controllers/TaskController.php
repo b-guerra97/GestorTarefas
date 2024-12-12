@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -32,23 +33,22 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'status_id' => 'required|exists:statuses,id',
             'project_id' => 'required|exists:projects,id',
         ]);
 
-        $task = new Task([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'status_id' => $request->input('status_id'),
-            'project_id' => $request->input('project_id'),
-        ]);
+        $task = new Task($validated);
+//        $task->name = $validated['name'];
+//        $task->description = $validated['description'];
+//        $task->status_id = $validated['status_id'];
+//        $task->project_id = $validated['project_id'];
 
         $task->save();
 
-        return redirect()->route('projects.index');
+        return view('projects.index');
     }
 
     /**

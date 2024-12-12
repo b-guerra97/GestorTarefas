@@ -83,11 +83,6 @@ class ProjectController extends Controller
         return redirect()->route('projects.index');
 
     }
-    public function createTask($projectId)
-    {
-        $statuses = Status::all();
-        return view('tasks.create', compact('projectId', 'statuses'));
-    }
 
     /**
      * Remove the specified resource from storage.

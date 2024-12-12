@@ -23,7 +23,7 @@ class ProjectFactory extends Factory
             'description' => fake()->sentence(),
             'due_date' => fake()->dateTimeBetween('now', '+1 year'),
             'status_id' => 1,
-            'user_id' => User::factory(),
+            'user_id' => 1
         ];
     }
 }
