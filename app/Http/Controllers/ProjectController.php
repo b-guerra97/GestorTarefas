@@ -7,7 +7,9 @@ use App\Models\Status;
 use App\Models\Tag;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -16,9 +18,20 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = auth()->user()->usersProjects->load('status');
+        //ou recebe a quantidade ou usa a quantidade que definirmos
+        $qtd = $request->get('qtd', 3);
+        $buscar = $request->get('buscar');
+
+        $query = auth()->user()->usersProjects()->with('status');
+
+        if ($buscar) {
+            $query->where('name', 'like', '%' . $buscar . '%');
+        }
+
+        $projects = $query->paginate($qtd);
+
         return view('projects.index', compact('projects'));
     }
 

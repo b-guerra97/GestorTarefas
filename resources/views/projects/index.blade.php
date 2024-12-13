@@ -16,6 +16,11 @@
             <div class="col">
                 <a href="{{route('projects.create')}}" class="btn btn-primary mb-3">Criar Novo Projeto</a>
 
+                <form action="{{ route('projects.index') }}" method="GET" class="d-flex mb-3">
+                    <input type="text" name="buscar" class="form-control me-2" placeholder="Buscar projetos..." value="{{ request('buscar') }}">
+                    <button type="submit" class="btn btn-secondary">Buscar</button>
+                    <a href="{{ route('projects.index') }}" class="btn btn-secondary ms-2">Limpar</a>
+                </form>
                 @if($projects->isEmpty())
                     <p class="mt-4">Você ainda não possui projetos criados.</p>
                 @else
@@ -57,6 +62,11 @@
                         </table>
                     </div>
                 @endif
+            </div>
+        </div>
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                {{ $projects->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

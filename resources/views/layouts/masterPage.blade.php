@@ -31,6 +31,7 @@
                     <h2 class="m-0">Gestor de Tarefas</h2>
                 </a>
             </div>
+
         </header>
 
         <!-- Main Content -->
