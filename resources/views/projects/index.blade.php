@@ -18,6 +18,18 @@
 
                 <form action="{{ route('projects.index') }}" method="GET" class="d-flex mb-3">
                     <input type="text" name="buscar" class="form-control me-2" placeholder="Buscar projetos..." value="{{ request('buscar') }}">
+
+                    <!-- Filtro por status -->
+                    <select name="status" class="form-select">
+                        <option value="">Todos os Status</option>
+                        <option value="criado" {{ request('status') == 'criado' ? 'selected' : '' }}>Criado</option>
+                        <option value="em andamento" {{ request('status') == 'em andamento' ? 'selected' : '' }}>Em Andamento</option>
+                        <option value="pendente" {{ request('status') == 'pendente' ? 'selected' : '' }}>Pendente</option>
+                        <option value="finalizado" {{ request('status') == 'finalizado' ? 'selected' : '' }}>Finalizado</option>
+                        <option value="cancelado" {{ request('status') == 'cancelado' ? 'selected' : '' }}>Cancelado</option>
+
+                    </select>
+
                     <button type="submit" class="btn btn-secondary">Buscar</button>
                     <a href="{{ route('projects.index') }}" class="btn btn-secondary ms-2">Limpar</a>
                 </form>

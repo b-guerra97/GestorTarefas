@@ -23,11 +23,17 @@ class ProjectController extends Controller
         //ou recebe a quantidade ou usa a quantidade que definirmos
         $qtd = $request->get('qtd', 3);
         $buscar = $request->get('buscar');
+        $status = $request->get('status');
 
         $query = auth()->user()->usersProjects()->with('status');
 
         if ($buscar) {
             $query->where('name', 'like', '%' . $buscar . '%');
+        }
+        if ($status) {
+            $query->whereHas('status', function ($q) use ($status) {
+                $q->where('status', $status);
+            });
         }
 
         $projects = $query->paginate($qtd);
