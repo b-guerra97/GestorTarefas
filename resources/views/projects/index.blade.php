@@ -6,6 +6,7 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center">
             <h1>Bem-Vindo, {{ auth()->user()->name }}</h1>
+
             <form action="/logout" method="POST">
                 @csrf
                 <button class="btn btn-danger">Log Out</button>

@@ -7,9 +7,12 @@ use App\Models\Status;
 use App\Models\Tag;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
@@ -55,10 +58,12 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $tasks = $project->tasks()->with('status', 'tags')->get();
-//        $tags_tasks = $task->tags;
-//        $status = $task->status();
-       return view('projects.show', compact('project', 'tasks'));
+        if (auth()->user()->usersProjects->contains($project)) {
+            $tasks = $project->tasks()->with('status', 'tags')->get();
+            return view('projects.show', compact('project', 'tasks'));
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
