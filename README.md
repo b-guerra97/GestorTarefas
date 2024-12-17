@@ -10,7 +10,7 @@
 ---
 ## Descrição do Projeto
 
-Este é um projeto desenvolvido para demonstrar habilidades básicas no framework Laravel, com a implementação de um CRUD completo, migrações de banco de dados, relacionamentos entre tabelas, paginação, busca e interface de utilziador estilizada com o Bootstrap.
+Este é um projeto desenvolvido para demonstrar habilidades básicas no framework Laravel, com a implementação de um CRUD completo, migrações de banco de dados, relacionamentos entre tabelas, paginação, busca e interface de utilizador estilizada com o Bootstrap.
 
 ## Funcionalidades
 
@@ -40,7 +40,7 @@ Siga os passos abaixo para instalar e configurar o projeto:
     ```
     1. **Clone o repositório -  SSH**:
     ```bash
-    git clone https://discordapp.com/channels/@me/1204825258972942356/1318631645200257034
+    git clone git@github.com:b-guerra97/GestorTarefas.git
     ```
 
 2. **Instale as dependências do Composer**:
@@ -67,19 +67,25 @@ Siga os passos abaixo para instalar e configurar o projeto:
     DB_PASSWORD=sua_senha
     ```
 
-5. **Gere a chave de aplicação do Laravel**:
+5. **Instale as dependências Node**
+    Execute o comando:
+   ```bash
+   npm install
+    ```
+
+6. **Gere a chave de aplicação do Laravel**:
    Execute o comando:
     ```bash
     php artisan key:generate
     ```
 
-6. **Rodando as Migrações**:
+7. **Rodando as Migrações**:
    Execute o comando para criar as tabelas no banco de dados:
     ```bash
     php artisan migrate
     ```
 
-7. **Inicie o servidor local**:
+8. **Inicie o servidor local**:
    Após a instalação, você pode rodar o servidor local do Laravel:
     ```bash
     php artisan serve
@@ -89,8 +95,14 @@ Siga os passos abaixo para instalar e configurar o projeto:
 
 ## Imagens do Projeto
 
-### Marcas.Index
-![Marcas.Index](public/)
+### Login
+![Login/Registo](public/storage/screenshots/authentication.png)
 
-### Produtos.Index
-![Marcas.Index](public/)
+### Projeto.Index
+![Projeto.Index](public/storage/screenshots/view_index.png)
+
+### Projeto.Show
+![Projeto.Show](public/storage/screenshots/view_show_project.png)
+
+### Projeto.Create
+![Projeto.Create](public/storage/screenshots/create_project.png)
