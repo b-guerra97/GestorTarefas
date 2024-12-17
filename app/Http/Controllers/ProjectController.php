@@ -21,7 +21,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         //ou recebe a quantidade ou usa a quantidade que definirmos
-        $qtd = $request->get('qtd', 3);
+        $qtd = $request->get('qtd', 5);
         $buscar = $request->get('buscar');
         $status = $request->get('status');
 
