@@ -25,7 +25,17 @@
                                     <li>{{$tag->tag}}</li>
                                 @endforeach
                             </ul>
-                            <p>{{$task->status->status}}</p>
+                            <p>
+                                <span class="badge rounded-pill
+                                    @if($task->status->status == 'Finalizado') bg-success
+                                    @elseif($task->status->status == 'Em Andamento') bg-primary
+                                    @elseif($task->status->status == 'Pendente') bg-warning
+                                    @elseif($task->status->status == 'Cancelado') bg-danger
+                                    @else bg-secondary
+                                    @endif">
+                                    {{ $task->status->status }}
+                                </span>
+                            </p>
                             <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
                             <form action="{{ route('tasks.destroy', $task) }}" method="POST" style="display:inline;">
                                 @csrf

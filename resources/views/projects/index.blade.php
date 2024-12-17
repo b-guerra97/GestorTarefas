@@ -30,7 +30,7 @@
 
                     </select>
 
-                    <button type="submit" class="btn btn-secondary">Buscar</button>
+                    <button type="submit" class="btn btn-primary ms-2">Buscar</button>
                     <a href="{{ route('projects.index') }}" class="btn btn-secondary ms-2">Limpar</a>
                 </form>
                 @if($projects->isEmpty())
@@ -54,7 +54,17 @@
                                     <td class="d-none">{{ $project->id }}</td>
                                     <td>{{ $project->name }}</td>
                                     <td>{{ Str::limit($project->description, 40) }}</td>
-                                    <td>{{ $project->status->status}}</td>
+                                    <td>
+                                        <span class="badge rounded-pill
+                                            @if($project->status->status == 'Finalizado') bg-success
+                                            @elseif($project->status->status == 'Em Andamento') bg-primary
+                                            @elseif($project->status->status == 'Pendente') bg-warning
+                                            @elseif($project->status->status == 'Cancelado') bg-danger
+                                            @else bg-secondary
+                                            @endif">
+                                            {{ $project->status->status }}
+                                        </span>
+                                    </td>
                                     <td>{{$project->due_date}}</td>
                                     <td class="text-end">
                                         <a href="{{ route('tasks.create', ['project_id' => $project->id]) }}" class="btn btn-secondary">
@@ -76,7 +86,7 @@
                 @endif
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col d-flex justify-content-center">
                 {{ $projects->links('pagination::bootstrap-4') }}
             </div>
