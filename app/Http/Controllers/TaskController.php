@@ -90,6 +90,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
+        $task->tags()->detach();
         $task->delete();
         return redirect()->back();
     }
