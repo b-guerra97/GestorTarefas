@@ -8,6 +8,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <h1 class="text-center">{{$project->name}}</h1>
+            <h4 class="text-center">{{$project->description}}</h4>
             <div class="d-flex justify-content-center gap-2 mt-2 mb-4">
                 <a href="{{route('tasks.create', ['project_id' => $project->id])}}" class="btn btn-primary">Criar Nova Tarefa</a>
                 <a href="{{ route('projects.index') }}" class="btn btn-secondary">Voltar</a>
